@@ -1,0 +1,61 @@
+<h2>{{pageTitle}}</h2>
+
+<div>
+    <h3>Filter by : <input type="text"
+                                [(ngModel)]='listFilter'> </h3>
+</div>
+
+<h3>Filtered By : {{listFilter}}</h3>
+
+<div >
+    <table *ngIf='products && products.length'>
+        <thead>
+        <tr>
+            <th>
+                <button (click)='toggleImage()'>{{showImage ? 'Hide ':'Show '}} Image</button>
+            </th>
+            <th>
+                Product
+            </th>
+            <th>
+                    Code
+                </th>
+                <th>
+                        Available
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                            Price
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th>
+                                5 Star ratings
+                            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let product of filteredProducts'>
+                <td>
+                    <img *ngIf='showImage'
+                         [src]='product.imageUrl'
+                         [style.width.px]='imageWidth'
+                         [style.margin.px]='imageMargin'
+                    >
+                </td>
+                <td>{{product.productId}}</td>
+                <td>{{product.productName }}</td>
+                <td>{{product.productCode | lowercase |convertToSpaces: '-'}}</td>
+                <td>{{product.releaseDate}}</td>
+                <td>{{product.price | currency:'USD':true:'1.2-2'}}</td>
+                <td></td>
+                <td></td>
+                <td><app-star></app-star></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

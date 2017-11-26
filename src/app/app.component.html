@@ -1,0 +1,14 @@
+<h1>{{pageTitle}}</h1>
+
+<ul>
+    <div *ngFor="let elem of myDict">
+        <li *ngFor="let key of keys(elem);">{{key}}:{{elem[key]}}</li>
+    </div>
+</ul>
+
+<h3>
+    <div *ngFor="let post of posts">
+        <h4>{{post.title}}</h4>
+    </div>
+    <app-prod></app-prod>
+</h3>
